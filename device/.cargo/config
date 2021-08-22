@@ -1,0 +1,19 @@
+[build]
+target = "thumbv6m-none-eabi"
+
+[target.thumbv6m-none-eabi]
+runner = "../uf2tool/target/release/uf2tool --deploy"
+rustflags = [
+    "-C", "link-arg=--nmagic",
+    "-C", "link-arg=-Tboot_from_ram.ld",
+    # "-C", "link-arg=-Map",
+    # "-C", "link-arg=mapfile",
+
+    # if you need to link to pre-compiled C libraries provided by a C toolchain
+    # use GCC as the linker by commenting out both lines above and then
+    # uncommenting the three lines below
+    # "-C", "linker=arm-none-eabi-gcc",
+    # "-C", "link-arg=-Wl,-Tboot_from_ram.ld",
+    # "-C", "link-arg=-nostartfiles",
+]
+# rustc-link-search = { all = "./" }

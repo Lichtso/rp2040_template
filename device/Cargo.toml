@@ -1,0 +1,15 @@
+[package]
+name = "rp2040_template"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+cortex-m = "0.7"
+embedded-hal = { version = "0.2.5", features=["unproven"] }
+rp2040-hal = "0.2.0"
+sha2 = { version = "0.9", default-features = false }
+
+[profile.release]
+opt-level = "z"
+codegen-units = 1
+lto = true
